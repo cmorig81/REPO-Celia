@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style_inicio.css' %}">
+    
+    <title>Gestion Hoteles</title>
+</head>
+<body>
+    GESTION HOTELES
+    <div class="container">
+        <form action="{% url 'gestion_Hotel' %}" method="post" id="login-form">{% csrf_token %}
+          <h2>{{ msg }}</h2>
+          <button class="boton" type="submit">Añadir Hotel</button>
+          <br>
+          <br>
+        </form> 
+
+
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox">
+                </td>
+                <th>Hotel</th>
+                <th>Numero plantas</th>
+            </tr>
+            {% for item in lista_hotel %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="checkbox">
+                </td>
+                <td>{{item}}</td>
+                <td>{{item.num_plantas}}</td>
+            </tr>
+
+            {% endfor %}  
+
+        </table>
+
+
+    </div> <!-- /container -->
+    
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 60%;
+        }
+        
+        td, th {
+            border: 1px solid #abc033;
+            text-align: left;
+            padding: 8px;
+            color: black;
+        }
+        
+        
+    </style>    
+
+    <br>
+    <br>
+    
+
+</body>
+</html>
+

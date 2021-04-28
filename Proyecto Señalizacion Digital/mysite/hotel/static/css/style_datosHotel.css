@@ -1,0 +1,31 @@
+.container {
+    margin: 200px;
+    padding: 5px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    color: darkorange; 
+}
+
+.boton{
+    height: 5vh;
+    width:fit-content;
+    font-size: 18px;
+    background-color: darkseagreen;
+
+}
+
+.listbox{
+    height: 5vh;
+    width:20vh;
+    font-size: 18px;
+    background-color:wheat;
+
+}
+
+.texto{
+    font-size: 25px;
+    color: black;
+}

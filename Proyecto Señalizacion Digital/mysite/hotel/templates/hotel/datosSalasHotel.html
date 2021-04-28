@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<meta http-equiv="refresh" content="5">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<script type="text/javascript" src="{% static 'js/recargar_pagina.js' %}"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <title>Ocupacion salas</title>
+</head>
+<body>
+    <h3>DATOS DE LAS SALAS DEL HOTEL {{ hotel }}</h3>
+    
+    {{ hotel }} <br>
+    {{ dic }} <br>
+    {{ lista }}
+    <br><br>
+    
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 75%;
+        }
+        
+        td, th {
+            border: 1px solid #abc033;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #abc033;
+        }
+        .person {
+            background-color:rgb(231, 173, 231);
+        
+        }
+    </style>    
+
+    <br>
+    <br>
+    <div id="tablaDatos">
+    <table>
+            <tr>
+                <th>nombre</th>
+                <th>aforo</th>
+                <th>abierto</th>
+                <th>planta</th>
+            </tr>
+            {% for item in lista %}
+            <tr>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.aforo}}</td>
+                    <td>{{item.abierto}}</td>
+                    <td>{{item.fk_planta}}</td>
+            </tr>
+            {% endfor %}  
+            
+    </table>        
+    <br>
+    
+    <table>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>persona</th>
+            </tr>
+    
+            {% for valor in dic.values %}
+                {% for item in valor %}
+                <tr>
+                    <td>{{item.fk_sala_id}}</td>
+                    <td>{{item.fk_sala.nombre}}</td>
+                    <td class="person">{{item.persona}}</td>
+
+                </tr>
+                {% endfor %}  
+            {% endfor %}   
+    </table>
+    </div>
+
+
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+        {$ data $}
+
+        <table>
+            <tr>
+                <th>nombre</th>
+                <th>aforo</th>
+                <th>abierto</th>
+                <th>planta</th>
+            </tr>
+        
+            <tr ng-repeat = "item in data.listaSalasHotel">
+    
+                    <td>{$ item.nombre $}</td>
+                    <td>{$ item.aforo $}</td>
+                    <td>{$ item.abierto $}</td>
+                    <td>{$ item.fk_planta $}</td>
+            </tr>
+            
+            
+    </table>    
+    <table>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>persona</th>
+        </tr>
+
+        {% for valor in dic.values %}
+            {% for item in valor %}
+            <tr>
+                <td>{{item.fk_sala_id}}</td>
+                <td>{{item.fk_sala.nombre}}</td>
+                <td class="person">{{item.persona}}</td>
+
+            </tr>
+            {% endfor %}  
+        {% endfor %}   
+    </table>
+    <br>
+    
+    
+
+
+    </div>
+
+
+</body>
+
+<script>
+
+        var app = angular.module('myApp', [], function($interpolateProvider) {
+            $interpolateProvider.startSymbol('{$');
+            $interpolateProvider.endSymbol('$}');
+        });
+
+        app.controller('myCtrl', function($scope,$http,$interval) {
+            //codigo aqui
+            $http.get("http://127.0.0.1:8000/hotel/consulta").then(function(response) {
+            $scope.data = response.data;
+        });
+
+        });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>
+

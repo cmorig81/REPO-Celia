@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="20">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <title>Cafeteria</title>
+</head>
+<body>
+    DATOS DE LA CAFETERIA DE HOTEL MIRADOR
+    <div class="container">
+        
+        <form class="form-signin" action="{% url 'datosSalaCafeteria' %}" method="post" id="login-form">{% csrf_token %}
+          <h2 class="form-signin-heading">{{ msg }}</h2>
+          <!--<label>Nombre de la sala: </label>
+          <input type="text" name="sala" required autofocus>-->
+          <label>Nombre del Hotel: </label>
+          <input type="text" name="hotel" required>  
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Buscar</button>
+          
+        </form> 
+    </div> <!-- /container -->
+
+    
+    
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #abc033;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #abc033;
+        }
+    </style>    
+
+    <br>
+    {{ sala }}
+    <br>
+    <table>
+            <tr>
+                <th>nombre</th>
+                <th>aforo</th>
+                <th>abierto</th>
+                <th>planta</th>
+            </tr>
+            <tr>
+                    <td>{{sala.nombre}}</td>
+                    <td>{{sala.aforo}}</td>
+                    <td>{{sala.abierto}}</td>
+                    <td>{{sala.fk_planta}}</td>
+            </tr>
+        
+    </table>        
+    <br>
+
+    <table>
+            <tr>
+                <th>id</th>
+                <th>nombre</th>
+                <th>persona</th>
+            </tr>
+            {% for item in lista_obj_estadoactualsala %}
+            <tr>
+                <td>{{item.fk_sala_id}}</td>
+                <td>{{item.fk_sala.nombre}}</td>
+                <td>{{item.persona}}</td>
+
+            </tr>
+
+            {% endfor %}  
+
+    </table>
+
+</body>
+</html>
+

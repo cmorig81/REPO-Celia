@@ -1,0 +1,43 @@
+{% load static %} 
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="{% static 'css/style_inicio.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap-theme.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'common/css/signin.css' %}" /> -->
+
+</head>
+<body>
+  <h2>{{ msg.upper }}</h2>
+    <div class="container">
+      
+      <a href="{% url 'gestion_Hotel' %}">
+        <input type="button" class="boton" value ="HOTEL" name="boton"/>
+        <!--<button class="boton" type="submit">HOTEL</button>-->
+      </a>
+      <br>
+      <a href="{}">
+        <input type="button" class="boton" value ="SALAS" name="boton"/>
+      </a>
+      <br>
+      <a href="{}">
+        <input type="button" class="boton" value ="SALAS CONTIGUAS" name="boton"/>
+      </a>
+      <br>
+      <a href="{}">
+        <input type="button" class="boton" value ="PLANTAS" name="boton"/>
+      </a>
+      <br>
+
+    </div> <!-- /container -->
+
+ 
+
+<script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+</body>
+</html>

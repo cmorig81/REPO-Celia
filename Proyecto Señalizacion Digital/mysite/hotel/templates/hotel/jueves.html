@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titulo del explorador</title>
+</head>
+<body>
+    MI PRIMERA PAGINA HTML La primera sala es {{sala.nombre}} #aqui le ponemos la clave (variable), no el valor 
+    <br>
+    {{ lista_salas }}
+    <br>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>aforo</th>
+        </tr>
+        {% for item in lista_salas %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.aforo}}</td>
+
+            </tr>
+
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <th>id sala</th>
+            <th>persona</th>
+        </tr>
+        {% if variable %}
+            {% for item in estado_actual %}
+                <tr>
+                    <td>{{ item.fk_sala.nombre }}</td>
+                    <td>{{ item.persona }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+             <tr>
+                 No hay ocupación en la sala
+             </tr>
+        {% endif %}   
+    </table>
+
+
+    <br>
+    <label> Manejo de labels sala cafetería</label><br>
+    <label>Sala: {{ sala }}</label><br>
+    <label>Id sala: {{ sala.id }}</label><br>
+    <label>Nombre sala:{{ sala.nombre }}</label><br>
+    <label>Aforo sala: {{ sala.aforo }}</label><br>
+    <label>Planta sala: {{ sala.fk_planta }}</label>
+</body>
+</html>
+

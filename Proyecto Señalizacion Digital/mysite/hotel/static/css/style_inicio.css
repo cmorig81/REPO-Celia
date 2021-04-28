@@ -1,0 +1,19 @@
+.container {
+    margin: 200px;
+    padding: 5px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    color: black
+}
+
+.boton{
+    height: 5vh;
+    width:fit-content;
+    font-size: 18px;
+    background-color: darkseagreen;
+
+}
+
